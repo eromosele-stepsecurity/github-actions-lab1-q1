@@ -5,6 +5,7 @@ on:
 
 permissions:  # added using https://github.com/step-security/secure-repo
   contents: read
+  id-token: write
 
 jobs:
   build:
