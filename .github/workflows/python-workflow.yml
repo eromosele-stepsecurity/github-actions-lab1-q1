@@ -30,5 +30,3 @@ jobs:
         pip install -r requirements.txt
     - name: Echo
       run: echo "213" > README.md
-    - name: Simulate failed security check
-      run: curl www.booking.com
