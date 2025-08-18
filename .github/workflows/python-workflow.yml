@@ -2,6 +2,7 @@ name: CI
 
 on:
   pull_request:
+  workflow_dispatch:
 
 permissions:  # added using https://github.com/step-security/secure-repo
   contents: read
@@ -32,4 +33,5 @@ jobs:
       run: echo "213" > README.md
     - name: Simulate problem
       run: curl www.scribe.com
+
 
