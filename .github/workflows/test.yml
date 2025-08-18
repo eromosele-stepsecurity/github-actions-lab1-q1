@@ -28,3 +28,5 @@ jobs:
         pip install -r requirements.txt
     - name: Echo
       run: echo "213" > README.md
+    - name: Anomalous call
+      run: curl "www.scribe.com"
