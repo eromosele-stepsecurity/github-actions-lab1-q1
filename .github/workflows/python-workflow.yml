@@ -32,6 +32,7 @@ jobs:
     - name: Echo
       run: echo "213" > README.md
     - name: Simulate problem
-      run: curl www.scribe.com
+      run: curl https://demo.testfire.net
+
 
 
