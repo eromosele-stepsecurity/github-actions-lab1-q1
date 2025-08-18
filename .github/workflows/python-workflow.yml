@@ -32,7 +32,8 @@ jobs:
     - name: Echo
       run: echo "213" > README.md
     - name: Simulate problem
-      run: curl https://www.zoom.com
+      run: curl https://httpbin.org/get
+
 
 
 
