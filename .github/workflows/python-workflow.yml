@@ -1,44 +1,16 @@
-name: CI
+name: Insecure Workflow Example
 
 on:
-  pull_request:
-  workflow_dispatch:
-
-permissions:  # added using https://github.com/step-security/secure-repo
-  contents: read
-  id-token: write
+  pull_request_target:
 
 jobs:
-  build:
+  insecure-job:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Harden Runner
-      uses: step-security/harden-runner@446798f8213ac2e75931c1b0769676d927801858 # v2.10.0
-      with:
-        policy: Test-policy
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
-    - name: Checkout repository
-      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      
-    - name: Set up Python 3.11
-      uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5.4.0
-      with:
-        python-version: 3.11
-
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
-
-    - name: Echo
-      run: echo "213" > README.md
-
-    - name: Get changed files
-      id: changed-files
-      uses: tj-actions/changed-files@v35
-
-    - name: List all changed files
-      run: |
-        for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-          echo "$file was changed"
-        done
+      - name: Run tests
+        run: npm test
