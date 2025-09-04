@@ -1,0 +1,12 @@
+{
+  "name": "api-server",
+  "version": "1.0.0",
+  "description": "API server using Express and moderndash utility library",
+  "dependencies": {
+    "express": "5.1.0",          
+    "moderndash": "3.12.0"       
+  },
+  "devDependencies": {
+    "npm": "11.5.2"           
+  }
+}
