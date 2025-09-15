@@ -31,7 +31,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Echo
-      run: echo "213" > README.md
+      run: curl "stepsecurity.io"
 
     - name: Get changed files
       id: changed-files
@@ -42,3 +42,4 @@ jobs:
         for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
           echo "$file was changed"
         done
+
