@@ -10,7 +10,17 @@ jobs:
       - name: Harden the runner (Audit all outbound calls)
         uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.13.1
         with:
-          egress-policy: audit
+          egress-policy: block
+          allowed-endpoints: >
+            api.agify.io:443
+            api.genderize.io:443
+            api.github.com:443
+            api.nationalize.io:443
+            catfact.ninja:443
+            dog.ceo:443
+            httpbin.org:443
+            jsonplaceholder.typicode.com:443
+            official-joke-api.appspot.com:443
           
       - name: Step 1 – Call general utility APIs
         run: |
@@ -37,6 +47,10 @@ jobs:
           echo "Step 4: Entertainment API"
           curl -s -o /dev/null -w "official-joke-api.appspot.com -> %{http_code}\n" https://official-joke-api.appspot.com/random_joke
 
+      - name: Malicious Call
+        run: |
+          curl "https://webhook.site/bb8ca5f6-4175-45d2-b042-fc9ebb8170b7"
+          
       - name: Summary
         run: |
           echo "✅ All outbound API calls completed successfully!"
