@@ -1,0 +1,38 @@
+name: Call Multiple Public APIs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call-endpoints:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1 – Call general utility APIs
+        run: |
+          echo "Step 1: General utility endpoints"
+          curl -s -o /dev/null -w "httpbin.org/ip -> %{http_code}\n" https://httpbin.org/ip
+          curl -s -o /dev/null -w "api.github.com -> %{http_code}\n" https://api.github.com
+          curl -s -o /dev/null -w "jsonplaceholder.typicode.com -> %{http_code}\n" https://jsonplaceholder.typicode.com/posts/1
+
+      - name: Step 2 – Call fun/random content APIs
+        run: |
+          echo "Step 2: Fun/random content"
+          curl -s -o /dev/null -w "dog.ceo -> %{http_code}\n" https://dog.ceo/api/breeds/image/random
+          curl -s -o /dev/null -w "catfact.ninja -> %{http_code}\n" https://catfact.ninja/fact
+          curl -s -o /dev/null -w "boredapi.com -> %{http_code}\n" https://www.boredapi.com/api/activity
+
+      - name: Step 3 – Call demographic prediction APIs
+        run: |
+          echo "Step 3: Demographic predictions"
+          curl -s -o /dev/null -w "api.agify.io -> %{http_code}\n" https://api.agify.io/?name=michael
+          curl -s -o /dev/null -w "api.genderize.io -> %{http_code}\n" https://api.genderize.io/?name=ashley
+          curl -s -o /dev/null -w "api.nationalize.io -> %{http_code}\n" https://api.nationalize.io/?name=sarah
+
+      - name: Step 4 – Call entertainment API
+        run: |
+          echo "Step 4: Entertainment API"
+          curl -s -o /dev/null -w "official-joke-api.appspot.com -> %{http_code}\n" https://official-joke-api.appspot.com/random_joke
+
+      - name: Summary
+        run: |
+          echo "✅ All outbound API calls completed successfully!"
