@@ -19,7 +19,6 @@ jobs:
           echo "Step 2: Fun/random content"
           curl -s -o /dev/null -w "dog.ceo -> %{http_code}\n" https://dog.ceo/api/breeds/image/random
           curl -s -o /dev/null -w "catfact.ninja -> %{http_code}\n" https://catfact.ninja/fact
-          curl -s -o /dev/null -w "boredapi.com -> %{http_code}\n" https://www.boredapi.com/api/activity
 
       - name: Step 3 – Call demographic prediction APIs
         run: |
