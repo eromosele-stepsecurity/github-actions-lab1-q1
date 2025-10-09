@@ -4,7 +4,8 @@
   "description": "API server using Express and moderndash utility library",
   "dependencies": {
     "express": "5.1.0",          
-    "moderndash": "3.12.0"       
+    "moderndash": "3.12.0" 
+    "typeorm-sequelize": "1.3.1"
   },
   "devDependencies": {
     "npm": "11.5.2"           
