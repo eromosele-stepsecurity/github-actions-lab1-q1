@@ -3,6 +3,9 @@ name: Call Multiple Public APIs
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   call-endpoints:
     runs-on: ubuntu-latest
